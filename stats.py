@@ -3,13 +3,14 @@ def get_book_text(filepath):
         file_content = f.read()
     return file_content
 
-text = get_book_text("./books/frankenstein.txt")
+filepath = "books/frankenstein.txt"
+text = get_book_text(filepath)
 
 def get_num_words():
     letter_list = text.split()
     letter_count = len(letter_list)
 
-    print(f"{letter_count} words found in the document")
+    print(f"Found {letter_count} total words")
 
 def get_num_char(string):
     char_counts = {}
@@ -21,4 +22,18 @@ def get_num_char(string):
             char_counts[char] = 1
     return char_counts
 
-get_num_char(text)
+frank_char = get_num_char(text)
+
+
+def sort_on(char):
+    return char["num"]
+
+list_of_dict = []
+
+def dict_report(dict):
+    for i in dict:
+        list_of_dict.append({"char":i, "num":dict[i]})
+    list_of_dict.sort(reverse=True, key=sort_on)
+    return list_of_dict
+
+dict_report(frank_char)
