@@ -1,9 +1,17 @@
+import sys
+
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+else: filepath = sys.argv[1]
+
 def get_book_text(filepath):
     with open(filepath) as f:
         file_content = f.read()
     return file_content
 
-filepath = "books/frankenstein.txt"
+
 text = get_book_text(filepath)
 
 def get_num_words():
@@ -36,4 +44,3 @@ def dict_report(dict):
     list_of_dict.sort(reverse=True, key=sort_on)
     return list_of_dict
 
-dict_report(frank_char)
